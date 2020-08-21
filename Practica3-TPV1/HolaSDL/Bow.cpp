@@ -25,7 +25,6 @@ void Bow::update()
 
 		}
 		mov = false;
-		vel = Vector2D(vel.getX(), abs(vel.getY()));
 	}
 	
 }
@@ -35,11 +34,10 @@ void Bow::handleEvents(SDL_Event& event) {
 		if (event.key.keysym.sym == SDLK_DOWN) {
 			mov = true;
 			vel = Vector2D(vel.getX(), abs(vel.getY()));
-
 		}
 		else  if (event.key.keysym.sym == SDLK_UP) {
 			mov = true;
-			vel = vel * -1;
+			vel = Vector2D(vel.getX(), abs(vel.getY())*-1);
 
 		}
 		else if (event.key.keysym.sym == SDLK_LEFT && !cargado)

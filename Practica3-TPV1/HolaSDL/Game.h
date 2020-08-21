@@ -12,7 +12,7 @@
 const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
 const uint NUM_TEXTURES = 7;
-const uint FRAME_RATE = 20;
+const uint FRAME_RATE = 120;
 const uint BALLOON_RATE = 2000;
 struct ImagenesAtributos {
 	string filename;
