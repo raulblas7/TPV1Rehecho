@@ -34,6 +34,7 @@ void Bow::handleEvents(SDL_Event& event) {
 
 		if (event.key.keysym.sym == SDLK_DOWN) {
 			mov = true;
+			vel = Vector2D(vel.getX(), abs(vel.getY()));
 
 		}
 		else  if (event.key.keysym.sym == SDLK_UP) {

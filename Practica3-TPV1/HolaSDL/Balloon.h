@@ -10,14 +10,16 @@ private:
 	Vector2D vel;
 	Texture* balloon;
 	int width, height;
+	int row;
 	bool pinchado = false;
 	uint pinchazoTime;
+	int frameAnimation =0;
 	Game* game;
 
 public:
-	Balloon(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* balloon_ , Game* game_);
+	Balloon(Point2D pos_, Vector2D vel_, int width_, int height_, int row_, Texture* balloon_, Game* game_);
 	~Balloon();
-	void render()const;
-	bool update() const;
+	void render();
+	bool update() ;
 };
 

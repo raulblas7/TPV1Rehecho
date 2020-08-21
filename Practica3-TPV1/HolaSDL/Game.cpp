@@ -29,15 +29,29 @@ Game::~Game()
 }
 
 void Game::run() {
+	uint frameTime = SDL_GetTicks();
+	frameBalloonTime = SDL_GetTicks();
 	while (!exit) { // Falta el control de tiempo
 		handleEvents();
-		update();
+
+		if (frameTime+FRAME_RATE<=SDL_GetTicks())
+		{
+			update();
+			frameTime = SDL_GetTicks();
+		}
+
 		render();
 	}
 }
 void Game::update() {
-	arco->update();
+	generateBalloons();
 
+	arco->update();
+	if (!balloons.empty()) {
+		for (int j = 0; j < balloons.size(); j++) {
+			balloons[j]->update();
+		}
+	}
 }
 void Game::render() const {
 	SDL_RenderClear(renderer);
@@ -75,4 +89,14 @@ void Game::ThrowArrow()
 
 void Game::generateBalloons()
 {
+
+	if (SDL_GetTicks() >= frameBalloonTime+BALLOON_RATE)
+	{
+		int color = rand() % 7;
+		double vel = rand() % 2 + 1;
+		int posX = rand() % 300 + 400;
+		balloons.push_back(new Balloon(Point2D(posX, WIN_HEIGHT), Vector2D(0, vel), 50, 50, color, textures[2], this));
+		frameBalloonTime = SDL_GetTicks();
+	}
+	
 }
