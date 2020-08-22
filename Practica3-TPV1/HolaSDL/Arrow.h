@@ -12,7 +12,8 @@ private:
 public:
 	Arrow(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* arrow_);
 	~Arrow();
-	void render()const;
-	bool update() const;
+	void render();
+	bool update() ;
+	SDL_Rect* getRect() { return new SDL_Rect{ (int)pos.getX() + (width/3) * 2, (int)pos.getY(), width/3, height }; };
 };
 

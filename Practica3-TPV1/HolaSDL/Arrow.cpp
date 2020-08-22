@@ -9,12 +9,13 @@ Arrow::~Arrow()
 
 }
 
-void Arrow::render() const
+void Arrow::render() 
 {
 	arrow->render(SDL_Rect{ (int)pos.getX(), (int)pos.getY(), width, height }, SDL_FLIP_NONE);
 }
 
-bool Arrow::update() const
+bool Arrow::update()
 {
-	return false;
+	pos = pos + vel;
+	return pos.getX() >= 800;
 }

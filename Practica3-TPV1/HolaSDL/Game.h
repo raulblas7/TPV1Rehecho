@@ -12,7 +12,7 @@
 const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
 const uint NUM_TEXTURES = 7;
-const uint FRAME_RATE = 120;
+const uint FRAME_RATE = 60;
 const uint BALLOON_RATE = 2000;
 struct ImagenesAtributos {
 	string filename;
@@ -25,11 +25,11 @@ private:
 	SDL_Renderer* renderer = nullptr;
 	bool exit = false;
 	int points = 0;
-	int flechas = 0;
+	int flechas = 5;
 	Texture* textures[NUM_TEXTURES];
 	vector<Arrow*> arrows;
 	vector<Balloon*> balloons;
-	Bow* arco = nullptr;
+	Bow* arco ;
 	void generateBalloons();
 	ImagenesAtributos imags[NUM_TEXTURES] = { {"..\\images\\bg1.png", 1, 1},{"..\\images\\Bow2.png", 1, 1},{"..\\images\\balloons.png", 7, 6},{"..\\images\\Bow1.png", 1, 1},{"..\\images\\Arrow1.png",1,1},{"..\\images\\Arrow2.png",1,1},{"..\\images\\digits1.png",1,10} };
 	uint frameBalloonTime;
@@ -41,6 +41,7 @@ public:
 	void render() const;
 	void handleEvents();
 	bool OnCollision(Balloon* balloon);
-	void ThrowArrow();
+	void ThrowArrow(Point2D pos);
+	int GetNumberArrows() { return flechas; };
 };
 
