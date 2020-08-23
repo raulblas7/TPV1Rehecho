@@ -8,12 +8,15 @@
 #include "Balloon.h"
 #include "Bow.h"
 #include <vector>
+#include "Scoreboard.h"
 
 const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
 const uint NUM_TEXTURES = 7;
 const uint FRAME_RATE = 60;
 const uint BALLOON_RATE = 2000;
+const int POINT_ADD = 10;
+
 struct ImagenesAtributos {
 	string filename;
 	uint nRows, nCols;
@@ -30,6 +33,7 @@ private:
 	vector<Arrow*> arrows;
 	vector<Balloon*> balloons;
 	Bow* arco ;
+	Scoreboard* scoreboard;
 	void generateBalloons();
 	ImagenesAtributos imags[NUM_TEXTURES] = { {"..\\images\\bg1.png", 1, 1},{"..\\images\\Bow2.png", 1, 1},{"..\\images\\balloons.png", 7, 6},{"..\\images\\Bow1.png", 1, 1},{"..\\images\\Arrow1.png",1,1},{"..\\images\\Arrow2.png",1,1},{"..\\images\\digits1.png",1,10} };
 	uint frameBalloonTime;
@@ -42,6 +46,7 @@ public:
 	void handleEvents();
 	bool OnCollision(Balloon* balloon);
 	void ThrowArrow(Point2D pos);
+	void AddPoints();
 	int GetNumberArrows() { return flechas; };
 };
 

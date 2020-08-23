@@ -72,6 +72,7 @@
     <ClCompile Include="Bow.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Scoreboard.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
@@ -80,6 +81,7 @@
     <ClInclude Include="Balloon.h" />
     <ClInclude Include="Bow.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Scoreboard.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>

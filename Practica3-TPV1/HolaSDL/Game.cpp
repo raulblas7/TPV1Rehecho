@@ -16,6 +16,8 @@ Game::Game()
 
 	// We finally create the game objects
 	arco = new Bow(Point2D(0, WIN_HEIGHT/2), Vector2D(0, 10), 100, 100, textures[3],textures[1],this);
+	scoreboard = new Scoreboard(Point2D(300, 0), 25, 35, textures[6], textures[5], flechas);
+
 	//game starts
 	run();
 }
@@ -25,16 +27,13 @@ Game::~Game()
 	for (uint i = 0; i < NUM_TEXTURES; i++) delete textures[i];
 	for (int k = 0; k < arrows.size(); k++) {
 		delete arrows[k];
-		arrows.erase(arrows.begin() + k);
-
 	}
 	for (int j = 0; j < balloons.size(); j++) {
-			delete balloons[j];
-			balloons.erase(balloons.begin() + j);
-		
+			delete balloons[j];		
 	}
 	
 	delete arco;
+	delete scoreboard;
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -59,14 +58,14 @@ void Game::update() {
 	generateBalloons();
 
 	arco->update();
-	if (!balloons.empty()) {
+	
 		for (int j = 0; j < balloons.size(); j++) {
 			if (balloons[j]->update()) {
 				delete balloons[j];
 				balloons.erase(balloons.begin() + j);
 			}
 		}
-	}
+	
 	if (!arrows.empty()) {
 		for (int k = 0; k < arrows.size(); k++) {
 			if (arrows[k]->update()) {
@@ -90,6 +89,8 @@ void Game::render() const {
 			balloons[j]->render();
 		}
 	}
+	//renderizado scoreboard
+	scoreboard->render();	
 	SDL_RenderPresent(renderer);
 }
 void Game::handleEvents() {
@@ -108,6 +109,7 @@ bool Game::OnCollision(Balloon* balloon)
 	{
 		if (SDL_HasIntersection(&balloon->getRect(), &arrows[i]->getRect()))
 		{
+			AddPoints();
 			return true;
 		}
 	}
@@ -123,6 +125,7 @@ void Game::ThrowArrow(Point2D pos)
 		double height = 20;
 		arrows.push_back(new Arrow(Point2D(pos.getX(), pos.getY()-height/2),Vector2D(20,0), witdh, height, textures[4]));
 		flechas--;
+		scoreboard->Arrows();
 
 	}
 }
@@ -139,4 +142,9 @@ void Game::generateBalloons()
 		frameBalloonTime = SDL_GetTicks();
 	}
 	
+}
+void Game::AddPoints()
+{
+	points += POINT_ADD;
+	scoreboard->Puntuacion(points);
 }
