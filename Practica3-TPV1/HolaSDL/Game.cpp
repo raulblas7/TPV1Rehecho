@@ -23,6 +23,18 @@ Game::Game()
 Game::~Game()
 {
 	for (uint i = 0; i < NUM_TEXTURES; i++) delete textures[i];
+	for (int k = 0; k < arrows.size(); k++) {
+		delete arrows[k];
+		arrows.erase(arrows.begin() + k);
+
+	}
+	for (int j = 0; j < balloons.size(); j++) {
+			delete balloons[j];
+			balloons.erase(balloons.begin() + j);
+		
+	}
+	
+	delete arco;
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -91,9 +103,10 @@ void Game::handleEvents() {
 
 bool Game::OnCollision(Balloon* balloon)
 {
+	bool tocado = false;
 	for (int i = 0; i < arrows.size(); i++)
 	{
-		if (SDL_HasIntersection(balloon->getRect(), arrows[i]->getRect()))
+		if (SDL_HasIntersection(&balloon->getRect(), &arrows[i]->getRect()))
 		{
 			return true;
 		}
@@ -122,7 +135,7 @@ void Game::generateBalloons()
 		int color = rand() % 7;
 		double vel = rand() % 2 + 1;
 		int posX = rand() % 300 + 400;
-		balloons.push_back(new Balloon(Point2D(posX, WIN_HEIGHT), Vector2D(0, vel), 50, 50, color, textures[2], this));
+		balloons.push_back( new Balloon(Point2D(posX, WIN_HEIGHT), Vector2D(0, vel), 50, 50, color, textures[2], this));
 		frameBalloonTime = SDL_GetTicks();
 	}
 	

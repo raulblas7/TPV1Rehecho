@@ -15,7 +15,7 @@ void Balloon::render()
 	if (pinchado) {
 	
 		int pin = SDL_GetTicks() - pinchazoTime;
-		frameAnimation =  int(((pin/ TIME_PER_FRAME) % 6));
+		frameAnimation =  pin/ TIME_PER_FRAME % 6;
 	}
 	balloon->renderFrame(SDL_Rect{(int) pos.getX(), (int)pos.getY(), width, height }, row, frameAnimation,0 , SDL_FLIP_NONE);
 
@@ -35,5 +35,5 @@ bool Balloon::update()
 	}
 	
 	
-	return pos.getY() <= -50 || frameAnimation >= 5;
+	return pos.getY() <= -50 || frameAnimation > 4;
 }

@@ -1,9 +1,10 @@
 #pragma once
 #include "Vector2D.h"
+#include "checkML.h"
 #include "Texture.h"
 using uint = unsigned int;
 class Game;
-const uint TIME_PER_FRAME = 200;
+const uint TIME_PER_FRAME = 100;
 class Balloon
 {
 private:
@@ -22,6 +23,6 @@ public:
 	~Balloon();
 	void render();
 	bool update() ;
-	SDL_Rect* getRect() { return new SDL_Rect{ (int)pos.getX(), (int)pos.getY(), width, height }; };
+	SDL_Rect getRect() { return SDL_Rect{ (int)pos.getX(), (int)pos.getY(), width, height }; };
 };
 
