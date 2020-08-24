@@ -9,6 +9,9 @@
 #include "Bow.h"
 #include <vector>
 #include "Scoreboard.h"
+#include "GameObject.h"
+#include "EventHandler.h"
+#include <list>
 
 const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
@@ -37,16 +40,21 @@ private:
 	void generateBalloons();
 	ImagenesAtributos imags[NUM_TEXTURES] = { {"..\\images\\bg1.png", 1, 1},{"..\\images\\Bow2.png", 1, 1},{"..\\images\\balloons.png", 7, 6},{"..\\images\\Bow1.png", 1, 1},{"..\\images\\Arrow1.png",1,1},{"..\\images\\Arrow2.png",1,1},{"..\\images\\digits1.png",1,10} };
 	uint frameBalloonTime;
+	list<GameObject*> objects;
+	list<Arrow*> arrows;
+	list<EventHandler*> events;
+	list<GameObject*> objectsToDelete;
 public:
 	Game();
 	~Game();
 	void run();
 	void update();
-	void render() const;
+	void render() ;
 	void handleEvents();
 	bool OnCollision(Balloon* balloon);
 	void ThrowArrow(Point2D pos);
 	void AddPoints();
+	void killObject(list<GameObject*>::iterator i);
 	int GetNumberArrows() { return flechas; };
 };
 

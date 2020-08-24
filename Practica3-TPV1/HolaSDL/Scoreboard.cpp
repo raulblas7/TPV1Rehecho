@@ -2,9 +2,10 @@
 #include "checkML.h"
 
 using namespace std;
-Scoreboard::Scoreboard() :esqIzq(), ancho(), alto(), points(), arrows(), numberarrows() {
+Scoreboard::Scoreboard() : GameObject(), esqIzq(), ancho(), alto(), points(), arrows(), numberarrows() {
 }
-Scoreboard::Scoreboard(Point2D esqIzq, uint ancho, uint alto, Texture* points, Texture* arrows, int numberArrows) : esqIzq(esqIzq), ancho(ancho), alto(alto), points(points), arrows(arrows), numberarrows(numberArrows)
+Scoreboard::Scoreboard(Point2D esqIzq, uint ancho, uint alto, Texture* points, Texture* arrows, int numberArrows)
+	: GameObject(), esqIzq(esqIzq), ancho(ancho), alto(alto), points(points), arrows(arrows), numberarrows(numberArrows)
 {
 	digitos.push_back(0);
 

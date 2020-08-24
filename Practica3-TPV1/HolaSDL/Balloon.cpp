@@ -2,7 +2,8 @@
 #include "Game.h"
 //Balloon::Balloon() :pos(), vel(), w(), velocidad(), globo(), explotado(), instPinchazo(), game() {}
 
-Balloon::Balloon(Point2D pos_, Vector2D vel_, int width_, int height_, int row_, Texture* balloon_, Game* game_): pos(pos_), vel(vel_), width(width_), height(height_), row(row_), balloon(balloon_), game(game_)
+Balloon::Balloon(Point2D pos_, Vector2D vel_, int width_, int height_, int row_, Texture* balloon_, Game* game_)
+	: ArrowsGameObject(pos_, vel_,width_, height_, balloon_,game_), row(row_)
 {
 }
 
@@ -21,7 +22,7 @@ void Balloon::render()
 
 }
 
-bool Balloon::update() 
+void Balloon::update() 
 {
 	if (!pinchado)
 	{
@@ -35,5 +36,5 @@ bool Balloon::update()
 	}
 	
 	
-	return pos.getY() <= -50 || frameAnimation > 4;
+	//return pos.getY() <= -50 || frameAnimation > 4;
 }

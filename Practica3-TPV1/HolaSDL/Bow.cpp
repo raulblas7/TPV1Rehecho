@@ -2,7 +2,8 @@
 #include "Game.h"
 
 
-Bow::Bow(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* bow_,Texture* bowC_, Game* game_): pos(pos_), vel(vel_), width(width_), height(height_), bow(bow_), bowC(bowC_), game(game_)
+Bow::Bow(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* bow_,Texture* bowC_, Game* game_)
+	: ArrowsGameObject(pos_, vel_, width_, height_, bow_, game_), bowC(bowC_)
 {
 
 }
