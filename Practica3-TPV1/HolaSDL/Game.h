@@ -19,6 +19,7 @@ const uint NUM_TEXTURES = 7;
 const uint FRAME_RATE = 60;
 const uint BALLOON_RATE = 2000;
 const int POINT_ADD = 10;
+const int POINT_LESS = 5;
 
 struct ImagenesAtributos {
 	string filename;
@@ -33,7 +34,7 @@ private:
 	int points = 0;
 	int flechas = 5;
 	Texture* textures[NUM_TEXTURES];
-	vector<Arrow*> arrows;
+	//vector<Arrow*> arrows;
 	vector<Balloon*> balloons;
 	Bow* arco ;
 	Scoreboard* scoreboard;
@@ -51,9 +52,10 @@ public:
 	void update();
 	void render() ;
 	void handleEvents();
-	bool OnCollision(Balloon* balloon);
+	bool OnCollision(list<GameObject*>::iterator it);
 	void ThrowArrow(Point2D pos);
 	void AddPoints();
+	void LessPoints();
 	void killObject(list<GameObject*>::iterator i);
 	int GetNumberArrows() { return flechas; };
 };

@@ -7,9 +7,7 @@ Balloon::Balloon(Point2D pos_, Vector2D vel_, int width_, int height_, int row_,
 {
 }
 
-Balloon::~Balloon()
-{
-}
+
 
 void Balloon::render() 
 {
@@ -18,7 +16,7 @@ void Balloon::render()
 		int pin = SDL_GetTicks() - pinchazoTime;
 		frameAnimation =  pin/ TIME_PER_FRAME % 6;
 	}
-	balloon->renderFrame(SDL_Rect{(int) pos.getX(), (int)pos.getY(), width, height }, row, frameAnimation,0 , SDL_FLIP_NONE);
+	texture->renderFrame(SDL_Rect{(int) pos.getX(), (int)pos.getY(), width, height }, row, frameAnimation,0 , SDL_FLIP_NONE);
 
 }
 
@@ -26,15 +24,14 @@ void Balloon::update()
 {
 	if (!pinchado)
 	{
-		pos = pos - vel;
-
-		if (game->OnCollision(this))
+		ArrowsGameObject::update();
+		if (game->OnCollision(it))
 		{
 			pinchado = true;
 			pinchazoTime = SDL_GetTicks();
 		}
 	}
-	
-	
-	//return pos.getY() <= -50 || frameAnimation > 4;
+	if (pos.getY() <= -50 || frameAnimation > 4) {
+		game->killObject(it);
+	}
 }

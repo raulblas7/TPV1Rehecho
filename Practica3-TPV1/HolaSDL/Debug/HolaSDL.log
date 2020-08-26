@@ -1,13 +1,2 @@
-﻿  Game.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Game.cpp(28,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Game.cpp(31,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Game.cpp(62,21): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Game.cpp(70,21): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Game.cpp(83,21): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Game.cpp(88,21): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Game.cpp(108,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Game.cpp(126,94): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Game.cpp(126,87): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
-  HolaSDL.vcxproj -> C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\bin\HolaSDLDebug.exe
+﻿  Bow.cpp
+  HolaSDL.vcxproj -> C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\bin\HolaSDLDebug.exe

@@ -5,7 +5,7 @@
 Bow::Bow(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* bow_,Texture* bowC_, Game* game_)
 	: ArrowsGameObject(pos_, vel_, width_, height_, bow_, game_), bowC(bowC_)
 {
-
+	aux = bow_;
 }
 
 Bow::~Bow()
@@ -14,23 +14,23 @@ Bow::~Bow()
 
 void Bow::render()
 {
-	if (cargado)
+	if (!cargado)
 	{
-		bow->render(SDL_Rect{ (int)pos.getX(), (int)pos.getY(), width, height }, SDL_FLIP_NONE);
-
+		texture = bowC;
 	}
 	else
 	{
-		bowC->render(SDL_Rect{ (int)pos.getX(), (int)pos.getY(), width, height }, SDL_FLIP_NONE);
-
+		texture = aux;
 	}
+	ArrowsGameObject::render();
+
 }
 
 void Bow::update()
 {
 	if (mov)
 	{
-		pos = pos + vel;
+		ArrowsGameObject::update();
 		if (pos.getY() + height >= 600|| pos.getY() <= 0)
 		{
 			pos = pos - vel;
@@ -40,7 +40,7 @@ void Bow::update()
 	}
 	
 }
-void Bow::handleEvents(SDL_Event& event) {
+void Bow::handleEvent(SDL_Event& event) {
 	if (event.type == SDL_KEYDOWN) {
 
 		if (event.key.keysym.sym == SDLK_DOWN) {

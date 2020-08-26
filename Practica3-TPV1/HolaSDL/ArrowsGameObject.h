@@ -8,23 +8,26 @@ class Game;
 
 class ArrowsGameObject:public GameObject
 {
-private:
+protected:
 	Point2D pos;
 	Vector2D vel;
-	Texture* arrow;
+	Texture* texture;
 	int width, height;
 	SDL_Rect* rect = nullptr;
 	Game* game = nullptr;
-	list<GameObject*>::iterator i;
+	list<GameObject*>::iterator it;
 
-protected:
-	ArrowsGameObject(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* arrow_, Game* game_)
-		: GameObject(), pos(pos_), vel(vel_), width(width_), height(height_), arrow(arrow_), game(game_) {};
+	ArrowsGameObject(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* texture_, Game* game_)
+		: GameObject(), pos(pos_), vel(vel_), width(width_), height(height_), texture(texture_), game(game_) {};
 public:
 	virtual void render();
 	virtual void update();
-	SDL_Rect getRect() {
+	SDL_Rect getDestRect() {
 		return SDL_Rect{ (int)pos.getX() , (int)pos.getY(), width , height };
+	}
+	SDL_Rect getCollisionRect()
+	{
+		return SDL_Rect{ (int)pos.getX() + width / 2,(int)pos.getY() + height / 2, width/2,height/2 };
 	}
 	void setItList(list<GameObject*>::iterator it);
 

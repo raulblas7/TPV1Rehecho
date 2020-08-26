@@ -14,7 +14,7 @@ private:
 	int frameAnimation =0;
 public:
 	Balloon(Point2D pos_, Vector2D vel_, int width_, int height_, int row_, Texture* balloon_, Game* game_);
-	~Balloon();
+	~Balloon() {};
 	void render();
 	void update() ;
 	SDL_Rect getRect() { return SDL_Rect{ (int)pos.getX(), (int)pos.getY(), width, height }; };
