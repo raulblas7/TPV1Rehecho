@@ -15,7 +15,7 @@ private:
 
 public:
 	Bow(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* bow_ ,Texture* bowC_, Game* game_);
-	~Bow();
+	~Bow() {};
 	virtual void render();
 	virtual void update();
 	virtual void handleEvent(SDL_Event& event);

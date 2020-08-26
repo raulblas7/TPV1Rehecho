@@ -29,15 +29,13 @@ Game::Game()
 Game::~Game()
 {
 	for (uint i = 0; i < NUM_TEXTURES; i++) delete textures[i];
-	for (int k = 0; k < arrows.size(); k++) {
-		//delete arrows[k];
-	}
-	for (int j = 0; j < balloons.size(); j++) {
-			delete balloons[j];		
+
+	for (auto& x : objects) {
+		
+		delete x;
+		x = nullptr;
 	}
 	
-	delete arco;
-	delete scoreboard;
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -65,10 +63,15 @@ void Game::update() {
 	for (auto it = objects.begin(); it != objects.end(); ++it) {
 		(*it)->update();
 	}
+	for (auto& x : objectsToDelete) {
+		objects.remove(x);
+		arrows.remove (dynamic_cast<Arrow*>(x));
+	}
+	objectsToDelete.clear();
 	/*for (auto it = objectsToDelete.begin(); it != objectsToDelete.end(); ++it)
 	{
-		objects.remove(*it);
-		//delete /*objectsToDelete[]
+		//objects.remove(*it);
+		delete *it;
 	}*/
 
 	/*for (int j = 0; j < balloons.size(); j++) {
@@ -135,9 +138,9 @@ void Game::ThrowArrow(Point2D pos)
 		double witdh = 90;
 		double height = 20;
 		auto flecha= new Arrow(Point2D(pos.getX(), pos.getY() - height / 2), Vector2D(20, 0), witdh, height, textures[4], this);
-		arrows.push_back(flecha);
 		objects.push_back(flecha);
 		flecha->setItList(--objects.end());
+		arrows.push_back(flecha);
 		flechas--;
 		scoreboard->Arrows();
 	}

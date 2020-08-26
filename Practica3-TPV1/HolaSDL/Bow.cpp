@@ -7,11 +7,6 @@ Bow::Bow(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* bow_,Tex
 {
 	aux = bow_;
 }
-
-Bow::~Bow()
-{
-}
-
 void Bow::render()
 {
 	if (!cargado)
