@@ -6,10 +6,6 @@ Arrow::Arrow(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* arro
 {
 }
 
-Arrow::~Arrow()
-{
-	
-}
 
 void Arrow::render() 
 {

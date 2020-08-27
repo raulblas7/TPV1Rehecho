@@ -1,7 +1,7 @@
 #include "Butterfly.h"
 #include "Game.h"
-Butterfly::Butterfly(Point2D pos_, Vector2D vel_, int width_, int height_, int row_, Texture* butterfly_, Game* game_)
-	: ArrowsGameObject(pos_, vel_, width_, height_, butterfly_, game_), row(row_)
+Butterfly::Butterfly(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* butterfly_, Game* game_)
+	: ArrowsGameObject(pos_, vel_, width_, height_, butterfly_, game_)
 {
 	time = SDL_GetTicks();
 }
@@ -17,10 +17,7 @@ void Butterfly::render()
 			time = SDL_GetTicks();
 		}
 	}
-	//texture->renderFrame(SDL_Rect{ (int)pos.getX(), (int)pos.getY(), width, height }, row, frameAnimation, 0, SDL_FLIP_NONE);
-
-	ArrowsGameObject::render();
-	//se cae hasta abajo y luego pongo muerta a true
+	texture->renderFrame(SDL_Rect{ (int)pos.getX(), (int)pos.getY(), width, height }, 0, frameAnimation, 0, SDL_FLIP_NONE);
 }
 
 void Butterfly::update()
@@ -30,6 +27,7 @@ void Butterfly::update()
 	{
 		pinchado = true;
 		pinchazoTime = SDL_GetTicks();
+		vel = Vector2D(0, 2);
 	}
 
 	if (!pinchado)

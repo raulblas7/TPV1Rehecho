@@ -5,7 +5,7 @@ class Arrow:public ArrowsGameObject
 {
 public:
 	Arrow(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* arrow_, Game* game_);
-	~Arrow();
+	~Arrow() {};
 	void render();
 	void update();
 	SDL_Rect getRect() {

@@ -15,13 +15,13 @@ Game::Game()
 	}
 
 	// We finally create the game objects
-	auto arco = new Bow(Point2D(0, WIN_HEIGHT / 2), Vector2D(0, 10), 100, 100, textures[3], textures[1], this);
+	arco = new Bow(Point2D(0, WIN_HEIGHT / 2), Vector2D(0, 10), 100, 100, textures[0], textures[2], this);
     objects.push_back(arco);
 	events.push_back(arco);
-	scoreboard = new Scoreboard(Point2D(300, 0), 25, 35, textures[6], textures[5], flechas);
+	scoreboard = new Scoreboard(Point2D(300, 0), 25, 35, textures[5], textures[4], flechas);
 	objects.push_back(scoreboard);
 
-
+	generateButterfly(10);
 	//game starts
 	run();
 }
@@ -30,11 +30,21 @@ Game::~Game()
 {
 	for (uint i = 0; i < NUM_TEXTURES; i++) delete textures[i];
 
-	for (auto& x : objects) {
-		
-		delete x;
-		x = nullptr;
+	delete arco;
+	arco = nullptr;
+
+	delete scoreboard;
+	scoreboard = nullptr;
+
+	list <GameObject*>::iterator it;
+	it = objects.begin();
+	while (it != objects.end()) {
+		delete (*it);
+		(*it) = nullptr;
+		++it;
 	}
+//	objects.clear();
+	events.clear();
 	
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
@@ -46,15 +56,14 @@ void Game::run() {
 	frameBalloonTime = SDL_GetTicks();
 	while (!exit) { // Falta el control de tiempo
 		handleEvents();
-
 		if (frameTime+FRAME_RATE<=SDL_GetTicks())
 		{
 			update();
 			frameTime = SDL_GetTicks();
 		}
-
 		render();
 	}
+	
 }
 void Game::update() {
 	generateBalloons();
@@ -65,29 +74,9 @@ void Game::update() {
 	}
 	for (auto& x : objectsToDelete) {
 		objects.remove(x);
-		arrows.remove (dynamic_cast<Arrow*>(x));
+		arrows.remove(dynamic_cast<Arrow*>(x));
 	}
 	objectsToDelete.clear();
-	/*for (auto it = objectsToDelete.begin(); it != objectsToDelete.end(); ++it)
-	{
-		//objects.remove(*it);
-		delete *it;
-	}*/
-
-	/*for (int j = 0; j < balloons.size(); j++) {
-		if (balloons[j]->update()) {
-			delete balloons[j];
-			balloons.erase(balloons.begin() + j);
-		}
-	}
-
-if (!arrows.empty()) {
-	for (int k = 0; k < arrows.size(); k++) {
-		if (arrows[k]->update()) {
-			delete arrows[k];
-			arrows.erase(arrows.begin() + k);
-		}
-	}*/
 }
 
 void Game::render()  {
@@ -115,10 +104,15 @@ bool Game::OnCollision(list<GameObject*>::iterator et)
 
 		if (SDL_HasIntersection(&dynamic_cast<ArrowsGameObject*>(*et)->getDestRect(), &(*it)->getCollisionRect()))
 		{
-			cout << "ledi";
 			if (dynamic_cast<Balloon*>(*et)!=nullptr)
 			{
 				AddPoints();
+				//int prob = rand() % 2 + 1;
+				//if (prob == 1) {
+					auto bal = dynamic_cast<Balloon*>(*et);
+					Vector2D pos = Vector2D(bal->getRect().x, bal->getRect().y+bal->getRect().h);
+					CreateReward(pos, 0);
+				//}
 			}
 			else
 			{
@@ -137,7 +131,7 @@ void Game::ThrowArrow(Point2D pos)
 	{
 		double witdh = 90;
 		double height = 20;
-		auto flecha= new Arrow(Point2D(pos.getX(), pos.getY() - height / 2), Vector2D(20, 0), witdh, height, textures[4], this);
+		auto flecha= new Arrow(Point2D(pos.getX(), pos.getY() - height / 2), Vector2D(20, 0), witdh, height, textures[3], this);
 		objects.push_back(flecha);
 		flecha->setItList(--objects.end());
 		arrows.push_back(flecha);
@@ -154,12 +148,24 @@ void Game::generateBalloons()
 		int color = rand() % 7;
 		double vel = rand() % 2 + 1;
 		int posX = rand() % 300 + 400;
-		auto globo= new Balloon(Point2D(posX, WIN_HEIGHT), Vector2D(0, -vel), 50, 50, color, textures[2], this);
+		auto globo= new Balloon(Point2D(posX, WIN_HEIGHT), Vector2D(0, -vel), 50, 50, color, textures[1], this);
 		objects.push_back(globo);
 		globo->setItList(--objects.end());
 		frameBalloonTime = SDL_GetTicks();
 	}
 	
+}
+void Game::generateButterfly(int num)
+{
+	for (int i = 0; i < num; i++) {
+		int posX = rand() % WIN_WIDTH + 0;
+		int posY = rand() % WIN_HEIGHT + 0;
+		double velX = rand() % 6 + (-3);
+		double velY = rand() % 6 + (-3);
+		auto butterfly = new Butterfly(Point2D(posX, posY), Vector2D(velX, velY), 50, 50, textures[6], this);
+		objects.push_back(butterfly);
+		butterfly->setItList(--objects.end());
+	}
 }
 void Game::AddPoints()
 {
@@ -171,6 +177,15 @@ void Game::LessPoints()
 {
 	points -= POINT_LESS;
 	scoreboard->Puntuacion(points);
+}
+
+void Game::CreateReward(Vector2D pos, int num)
+{
+	
+	auto reward = new Reward(Point2D(pos.getX(), pos.getY()), Vector2D(0, 0.1), 50, 35, 0, textures[7], textures[8], this);
+	objects.push_back(reward);
+	reward->setItList(--objects.end());
+	events.push_back(reward);
 }
 
 void Game::killObject(list<GameObject*>::iterator it)
