@@ -63,7 +63,7 @@ private:
 	Texture* textures[NUM_TEXTURES];
 	Texture* fondo;
 	//vector<Arrow*> arrows;
-	int arrowsSize = 1;
+	int arrowsSize = 0;
 
 	vector<Balloon*> balloons;
 	Bow* arco ;

@@ -7,6 +7,5 @@ void GiveMeArrows::accion(bool active) {
 	if (active)
 	{
 		game->AddArrows(2);
-
 	}
 }

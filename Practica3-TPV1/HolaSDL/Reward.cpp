@@ -31,14 +31,13 @@ void Reward::update()
 	{		burbuja = false;
 	}
 	
-	if (  pos.getY() >= 600 || (tocado && time + timePower < SDL_GetTicks()))
+	if (  pos.getY() >= 600 || (tocado && time + timePower >= SDL_GetTicks() && power))
 	{
-		if (power)
-		{
-		//	accion(false);
-		}
+		accion(false);
 		game->killObject(it);
 	}
+
+	
 	
 }
 
@@ -51,8 +50,9 @@ void Reward::handleEvent(SDL_Event& event)
 		if (errorX < 50 && errorY < 50)
 		{
 			tocado = true;
-			//accion(true);
+			accion(true);
 			time = SDL_GetTicks();
+			power = true;
 		}
 	}
 }

@@ -25,10 +25,10 @@ void Butterfly::update()
 	ArrowsGameObject::update();
 	if (!pinchado)
 	{
-		if (pos.getX() <= 0 || pos.getX() >= 800) {
+		if (pos.getX() <= 0 || pos.getX() >= 750) {
 			vel = Vector2D(-vel.getX(), vel.getY());
 		}
-		else if (pos.getY() <= 0 || pos.getY() >= 600) {
+		else if (pos.getY() <= 0 || pos.getY() >= 550) {
 			vel = Vector2D(vel.getX(), -vel.getY());
 		}
 

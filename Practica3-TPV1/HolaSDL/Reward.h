@@ -12,7 +12,7 @@ private:
 	Texture* bubble;
 	int row;
 	int frameAnimation = 0;
-	uint time;
+	int time = 0;
 public:
 	Reward(Point2D pos_, Vector2D vel_, int width_, int height_, int row_, Texture* reward_, Texture* bubble_, Game* game_);
 	void render();
@@ -20,7 +20,6 @@ public:
 	void handleEvent(SDL_Event& event);
 	void saveToFile(ofstream& output);
 	void loadFromFile(ifstream& input);
-	//virtual void accion(bool active) = 0;
-
+	virtual void accion(bool active) = 0;
 };
 

@@ -9,7 +9,5 @@ void BigArrows::accion(bool active) {
 		suma *= -1;
 	}
 	game->ArrowSize(suma);
-
-
 }
 

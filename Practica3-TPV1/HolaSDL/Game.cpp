@@ -21,7 +21,6 @@ Game::Game()
 	scoreboard = new Scoreboard(Point2D(300, 0), 25, 35, textures[5], textures[4], this);
 	objects.push_back(scoreboard);
 
-	generateButterfly();
 	//game starts
 	run();
 }
@@ -66,17 +65,18 @@ void Game::run() {
 	
 }
 void Game::update() {
-	generateBalloons();
-
-
-	for (auto it = objects.begin(); it != objects.end(); ++it) {
-		(*it)->update();
+	if (mariposas > 0) {
+		generateBalloons();
+		for (auto it = objects.begin(); it != objects.end(); ++it) {
+			(*it)->update();
+		}
+		for (auto& x : objectsToDelete) {
+			objects.remove(x);
+			arrows.remove(dynamic_cast<Arrow*>(x));
+		}
+		objectsToDelete.clear();
 	}
-	for (auto& x : objectsToDelete) {
-		objects.remove(x);
-		arrows.remove(dynamic_cast<Arrow*>(x));
-	}
-	objectsToDelete.clear();
+	else { cout << "HAS PERDIDO BRO" << endl; exit = true; }
 }
 
 void Game::render()  {
@@ -108,16 +108,17 @@ bool Game::OnCollision(list<GameObject*>::iterator et)
 			{
 				(*it)->AddHit();
 				AddPoints((*it)->getNHits());
-				//int prob = rand() % 2 + 1;
-				//if (prob == 1) {
+				int prob = rand() % 2 + 1;
+				if (prob == 1) {
 					auto bal = dynamic_cast<Balloon*>(*et);
 					Vector2D pos = Vector2D(bal->getDestRect().x, bal->getDestRect().y+bal->getDestRect().h);
 					CreateReward(pos, 0);
-				//}
+				}
 			}
 			else if(dynamic_cast<Butterfly*>(*et) != nullptr)
 			{
 				LessPoints();
+				mariposas--;
 			}
 			return true;
 		}
@@ -132,7 +133,7 @@ void Game::ThrowArrow(Point2D pos)
 	{
 		double witdh = 90;
 		double height = 20;
-		auto flecha= new Arrow(Point2D(pos.getX(), pos.getY() - height / 2), Vector2D(arrowsSize, 0), witdh, height, textures[3], this);
+		auto flecha= new Arrow(Point2D(pos.getX(), pos.getY() - height / 2), Vector2D(15, 0), witdh + arrowsSize, height + arrowsSize, textures[3], this);
 		objects.push_back(flecha);
 		flecha->setItList(--objects.end());
 		arrows.push_back(flecha);
@@ -158,8 +159,8 @@ void Game::generateBalloons()
 void Game::generateButterfly()
 {
 	for (int i = 0; i < mariposas; i++) {
-		int posX = rand() % WIN_WIDTH + 0;
-		int posY = rand() % WIN_HEIGHT + 0;
+		int posX = rand() % (WIN_WIDTH-50) + 0;
+		int posY = rand() % (WIN_HEIGHT-50) + 0;
 		double velX = rand() % (int)(Vel_But.max-Vel_But.min) + Vel_But.min;
 		double velY = rand() % (int)(Vel_But.max - Vel_But.min) + Vel_But.min;
 		auto butterfly = new Butterfly(Point2D(posX, posY), Vector2D(velX, velY), 50, 50, textures[6], this);
@@ -184,10 +185,19 @@ void Game::LessPoints()
 
 void Game::CreateReward(Vector2D pos, int num)
 {
-	auto reward = new Reward(Point2D(pos.getX(), pos.getY()), Vector2D(0, 0.1), 50, 35, 0, textures[7], textures[8], this);
-	objects.push_back(reward);
-	reward->setItList(--objects.end());
-	events.push_back(reward);
+	int color = rand() % 2;
+	Reward* premio = nullptr;
+	switch (color)
+	{
+	case 0: premio = new GiveMeArrows(pos, Vector2D(0, 0.1), 50, 35, textures[7], textures[8], this, color);
+		break;
+	case 1: premio = new BigArrows(pos, Vector2D(0, 0.1), 50, 35, textures[7], textures[8], this, color);
+		break;
+
+	}
+	events.push_back(premio);
+	auto et = objects.insert(objects.end(), premio);
+	premio->setItList(et);
 }
 
 void Game::killObject(list<GameObject*>::iterator it)
@@ -198,19 +208,23 @@ void Game::killObject(list<GameObject*>::iterator it)
 void Game::NewLevel()
 {
 	level++;
-	for (auto& x : objects) {
-		if (dynamic_cast<Scoreboard*>(x)==nullptr && dynamic_cast<Bow*>(x) == nullptr)
-		{
-			objectsToDelete.push_back(x);
+	if (level < NUM_Lvl) {
+		for (auto& x : objects) {
+			if (dynamic_cast<Scoreboard*>(x) == nullptr && dynamic_cast<Bow*>(x) == nullptr)
+			{
+				objectsToDelete.push_back(x);
+			}
+
 		}
-		
+		fondo = new Texture(renderer, niveles[level].filename, 1, 1);
+		flechas = niveles[level].numFlecha;
+		mariposas = niveles[level].numMariposas;
+		Vel_Bal = niveles[level].velBal;
+		Vel_But = niveles[level].velBut;
+		generateButterfly();
 	}
-	fondo = new Texture(renderer, niveles[level].filename, 1, 1);
-	flechas = niveles[level].numFlecha;
-	mariposas = niveles[level].numMariposas;
-	Vel_Bal = niveles[level].velBal;
-	Vel_But = niveles[level].velBut;
-	generateButterfly();
+	else { cout << "HAS GANADO!" << endl; exit = true; }
+
 }
 
 void Game::saveToFile(ofstream& output) {
