@@ -56,3 +56,19 @@ void Reward::handleEvent(SDL_Event& event)
 		}
 	}
 }
+void Reward::saveToFile(ofstream& output) {
+	output << "Premio" << endl;
+	output << row << endl;
+	ArrowsGameObject::saveToFile(output);
+	if (burbuja) output << "burbuja" << endl;
+	else output << "noburbuja" << endl;
+}
+
+void Reward::loadFromFile(ifstream& input) {
+	ArrowsGameObject::loadFromFile(input);
+	string line;
+	input >> line;
+	if (line == "burbuja") burbuja = true;
+	else burbuja = false;
+}
+

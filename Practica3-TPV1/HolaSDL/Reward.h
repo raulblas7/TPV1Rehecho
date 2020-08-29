@@ -18,6 +18,8 @@ public:
 	void render();
 	void update();
 	void handleEvent(SDL_Event& event);
+	void saveToFile(ofstream& output);
+	void loadFromFile(ifstream& input);
 	//virtual void accion(bool active) = 0;
 
 };

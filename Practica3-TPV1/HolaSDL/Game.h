@@ -12,8 +12,13 @@
 #include <vector>
 #include "Scoreboard.h"
 #include "GameObject.h"
+#include "FileFormatError.h"
+#include "FileNotFoundError.h"
+#include "GiveMeArrows.h"
+#include "BigArrows.h"
 #include "EventHandler.h"
 #include <list>
+#include <math.h>
 
 const uint WIN_WIDTH = 800;
 const uint WIN_HEIGHT = 600;
@@ -49,10 +54,17 @@ private:
 	SDL_Renderer* renderer = nullptr;
 	bool exit = false;
 	int points = 0;
-	int flechas = 20;
+	int flechas = 0;
+	int mariposas = 0;
+	MinMaxValue Vel_Bal;
+	MinMaxValue Vel_But;
+	int level = - 1;
 	uint frameBalloonTime;
 	Texture* textures[NUM_TEXTURES];
+	Texture* fondo;
 	//vector<Arrow*> arrows;
+	int arrowsSize = 1;
+
 	vector<Balloon*> balloons;
 	Bow* arco ;
 	Scoreboard* scoreboard;
@@ -78,12 +90,17 @@ public:
 	void handleEvents();
 	bool OnCollision(list<GameObject*>::iterator it);
 	void ThrowArrow(Point2D pos);
-	void AddPoints();
+	void AddPoints(int numhits);
 	void LessPoints();
 	void CreateReward(Vector2D pos, int num);
 	void generateBalloons();
-	void generateButterfly(int num);
+	void generateButterfly();
 	void killObject(list<GameObject*>::iterator i);
 	int GetNumberArrows() { return flechas; };
+	void NewLevel();
+	void saveToFile(ofstream& output);
+	void loadFroamFile(ifstream& input);
+	void ArrowSize(double proporcion);
+	void AddArrows(int num);
 };
 

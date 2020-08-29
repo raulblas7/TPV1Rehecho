@@ -14,6 +14,7 @@ public:
 	~Butterfly() {};
 	void render();
 	void update();
-	SDL_Rect getRect() { return SDL_Rect{ (int)pos.getX(), (int)pos.getY(), width, height }; };
+	void loadFromFile(ifstream& input);
+	void saveToFile(ofstream& outuput);
 };
 

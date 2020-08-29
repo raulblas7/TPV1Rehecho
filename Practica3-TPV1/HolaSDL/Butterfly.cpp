@@ -23,13 +23,6 @@ void Butterfly::render()
 void Butterfly::update()
 {
 	ArrowsGameObject::update();
-	if (game->OnCollision(it))
-	{
-		pinchado = true;
-		pinchazoTime = SDL_GetTicks();
-		vel = Vector2D(0, 2);
-	}
-
 	if (!pinchado)
 	{
 		if (pos.getX() <= 0 || pos.getX() >= 800) {
@@ -38,6 +31,22 @@ void Butterfly::update()
 		else if (pos.getY() <= 0 || pos.getY() >= 600) {
 			vel = Vector2D(vel.getX(), -vel.getY());
 		}
+
+		if (game->OnCollision(it))
+		{
+			pinchado = true;
+			pinchazoTime = SDL_GetTicks();
+			vel = Vector2D(0, 2);
+		}
 	}
 	else if(SDL_GetTicks()>=pinchazoTime+3000){ game->killObject(it); }
+}
+
+void Butterfly::saveToFile(ofstream& output) {
+	output << "Mariposa" << endl;
+	ArrowsGameObject::saveToFile(output);
+}
+
+void Butterfly::loadFromFile(ifstream& input) {
+	ArrowsGameObject::loadFromFile(input);
 }

@@ -68,30 +68,42 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Arrow.cpp" />
+    <ClCompile Include="ArrowsError.cpp" />
     <ClCompile Include="ArrowsGameObject.cpp" />
     <ClCompile Include="Balloon.cpp" />
+    <ClCompile Include="BigArrows.cpp" />
     <ClCompile Include="Bow.cpp" />
     <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="EventHandler.cpp" />
+    <ClCompile Include="FileFormatError.cpp" />
+    <ClCompile Include="FileNotFoundError.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GiveMeArrows.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Reward.cpp" />
     <ClCompile Include="Scoreboard.cpp" />
+    <ClCompile Include="SDLError.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arrow.h" />
+    <ClInclude Include="ArrowsError.h" />
     <ClInclude Include="ArrowsGameObject.h" />
     <ClInclude Include="Balloon.h" />
+    <ClInclude Include="BigArrows.h" />
     <ClInclude Include="Bow.h" />
     <ClInclude Include="Butterfly.h" />
     <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="FileFormatError.h" />
+    <ClInclude Include="FileNotFoundError.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GiveMeArrows.h" />
     <ClInclude Include="Reward.h" />
     <ClInclude Include="Scoreboard.h" />
+    <ClInclude Include="SDLError.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>

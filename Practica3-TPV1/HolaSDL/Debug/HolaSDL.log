@@ -1,7 +1,18 @@
-﻿  Game.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\crtdbg.h(303,1): warning C4005: '_malloca': redefinición de macro
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\malloc.h(122): message : vea la definición anterior de '_malloca'
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Game.cpp(135,96): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Game.cpp(135,89): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Game.cpp(127): warning C4715: 'Game::OnCollision': no todas las rutas de acceso de control devuelven un valor
-  HolaSDL.vcxproj -> C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\bin\HolaSDLDebug.exe
+﻿  BigArrows.cpp
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\BigArrows.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileFormatError.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(4,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(5,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\GiveMeArrows.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+  SDLError.cpp
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\SDLError.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\SDLError.h(4,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileFormatError.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(4,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(5,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\GiveMeArrows.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\BigArrows.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+  Generando código...
+  HolaSDL.vcxproj -> C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\bin\HolaSDLDebug.exe

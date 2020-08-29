@@ -35,3 +35,11 @@ void Balloon::update()
 		game->killObject(it);
 	}
 }
+
+void Balloon::loadFromFile(ifstream& input)
+{
+}
+
+void Balloon::saveToFile(ofstream& outuput)
+{
+}

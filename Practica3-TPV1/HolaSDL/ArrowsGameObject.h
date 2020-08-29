@@ -4,6 +4,8 @@
 #include "Texture.h"
 #include "checkML.h"
 #include <list>
+#include <fstream>
+
 class Game;
 
 class ArrowsGameObject:public GameObject
@@ -30,6 +32,8 @@ public:
 		return SDL_Rect{ (int)pos.getX() + width / 2,(int)pos.getY() + height / 2, width/2,height/2 };
 	}
 	void setItList(list<GameObject*>::iterator it);
+	virtual void loadFromFile(ifstream& input);
+	virtual void saveToFile(ofstream& outuput);
 
 };
 

@@ -19,3 +19,16 @@ void Arrow::update()
 		game->killObject(it);
 	}
 }
+
+int Arrow::getNHits()
+{
+	return numHits;
+}
+
+void Arrow::loadFromFile(ifstream& input)
+{
+}
+
+void Arrow::saveToFile(ofstream& outuput)
+{
+}

@@ -16,14 +16,13 @@ private:
 	Texture* arrows = nullptr;
 	uint ancho = 0;
 	uint alto = 0; 
+	Game* game = nullptr;
 	vector<int>digitos;
-	int numberarrows;
 
 public:
 	Scoreboard();
-	Scoreboard(Point2D esqIzq, uint ancho, uint alto, Texture* points, Texture* arrows, int numberArrows);
+	Scoreboard(Point2D esqIzq, uint ancho, uint alto, Texture* points, Texture* arrows,Game*game);
 	void Puntuacion(int score);
-	void Arrows();
 	void render();
 	void update() {};
 

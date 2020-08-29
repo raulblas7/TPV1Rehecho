@@ -1,22 +1,16 @@
 #include "Scoreboard.h"
 #include "checkML.h"
-
+#include "Game.h"
 using namespace std;
-Scoreboard::Scoreboard() : GameObject(), esqIzq(), ancho(), alto(), points(), arrows(), numberarrows() {
+Scoreboard::Scoreboard() : GameObject(), esqIzq(), ancho(), alto(), points(), arrows(),game() {
 }
-Scoreboard::Scoreboard(Point2D esqIzq, uint ancho, uint alto, Texture* points, Texture* arrows, int numberArrows)
-	: GameObject(), esqIzq(esqIzq), ancho(ancho), alto(alto), points(points), arrows(arrows), numberarrows(numberArrows)
+Scoreboard::Scoreboard(Point2D esqIzq, uint ancho, uint alto, Texture* points, Texture* arrows,Game*game)
+	: GameObject(), esqIzq(esqIzq), ancho(ancho), alto(alto), points(points), arrows(arrows),game(game)
 {
 	digitos.push_back(0);
 
 }
 
-
-//restamos flechas
-void Scoreboard::Arrows()
-{
-	numberarrows--;
-}
 //metodo que controla los puntos
 void Scoreboard::Puntuacion(int score)
 {
@@ -45,9 +39,9 @@ void Scoreboard::render() {
 		destRect.x -= 25;
 
 		points->renderFrame(destRect, 0, digitos[i], 0, SDL_FLIP_NONE);
-
+		
 	}
-	for (int i = 0; i < numberarrows; i++)
+	for (int i = 0; i < game->GetNumberArrows() ; i++)
 	{
 
 		destRect.x -= 25;
