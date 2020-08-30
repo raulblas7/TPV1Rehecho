@@ -1,11 +1,11 @@
 ﻿  Reward.cpp
-C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileFormatError.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(4,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(5,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\GiveMeArrows.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\BigArrows.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\Reward.cpp(34,57): warning C4018: '>=': no coinciden signed/unsigned
-C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\Reward.cpp(50,14): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\HolaSDL\Reward.cpp(51,14): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
-  HolaSDL.vcxproj -> C:\Users\forev\OneDrive\Desktop\TPV1Rehecho\Practica3-TPV1\bin\HolaSDLDebug.exe
+C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileFormatError.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(4,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(5,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\GiveMeArrows.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\BigArrows.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Reward.cpp(34,58): warning C4018: '<=': no coinciden signed/unsigned
+C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Reward.cpp(52,14): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\Reward.cpp(53,14): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+  HolaSDL.vcxproj -> C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\bin\HolaSDLDebug.exe

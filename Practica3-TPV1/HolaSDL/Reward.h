@@ -13,8 +13,9 @@ private:
 	int row;
 	int frameAnimation = 0;
 	int time = 0;
+	int timeP = 0;
 public:
-	Reward(Point2D pos_, Vector2D vel_, int width_, int height_, int row_, Texture* reward_, Texture* bubble_, Game* game_);
+	Reward(Point2D pos_, Vector2D vel_, int width_, int height_, int row_, Texture* reward_, Texture* bubble_, Game* game_,int timePower);
 	void render();
 	void update();
 	void handleEvent(SDL_Event& event);

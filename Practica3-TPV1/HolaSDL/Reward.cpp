@@ -1,7 +1,7 @@
 #include "Reward.h"
 #include "Game.h"
-Reward::Reward(Point2D pos_, Vector2D vel_, int width_, int height_, int row_, Texture* reward_, Texture* bubble_, Game* game_)
-	: ArrowsGameObject(pos_, vel_, width_, height_, reward_, game_), row(row_), bubble(bubble_)
+Reward::Reward(Point2D pos_, Vector2D vel_, int width_, int height_, int row_, Texture* reward_, Texture* bubble_, Game* game_,int timePower)
+	: ArrowsGameObject(pos_, vel_, width_, height_, reward_, game_), row(row_), bubble(bubble_),timePower(timePower)
 {
 }
 
@@ -17,7 +17,7 @@ void Reward::render()
 		}
 
 
-		texture->renderFrame(SDL_Rect{ (int)pos.getX() + width / 4, (int)pos.getY() + height / 4, width / 2, height / 2 }, 0, frameAnimation, 0, SDL_FLIP_NONE);
+		texture->renderFrame(SDL_Rect{ (int)pos.getX() + width / 4, (int)pos.getY() + height / 4, width / 2, height / 2 },row, frameAnimation, 0, SDL_FLIP_NONE);
 
 		if (burbuja) bubble->render(SDL_Rect{ (int)pos.getX(), (int)pos.getY(), width, height }, SDL_FLIP_NONE);
 
@@ -31,9 +31,13 @@ void Reward::update()
 	{		burbuja = false;
 	}
 	
-	if (  pos.getY() >= 600 || (tocado && time + timePower >= SDL_GetTicks() && power))
+	if (  pos.getY() >= 600 || (tocado && timeP + timePower <= SDL_GetTicks() ))
 	{
-		accion(false);
+		if (timePower>0)
+		{
+			accion(false);
+
+		}
 		game->killObject(it);
 	}
 
@@ -51,8 +55,7 @@ void Reward::handleEvent(SDL_Event& event)
 		{
 			tocado = true;
 			accion(true);
-			time = SDL_GetTicks();
-			power = true;
+			timeP = SDL_GetTicks();
 		}
 	}
 }

@@ -27,7 +27,6 @@ Game::Game()
 
 Game::~Game()
 {
-	for (uint i = 0; i < NUM_TEXTURES; i++) delete textures[i];
 
 	delete arco;
 	arco = nullptr;
@@ -45,6 +44,7 @@ Game::~Game()
 //	objects.clear();
 	events.clear();
 	
+	for (uint x = 0; x < NUM_TEXTURES; x++) delete textures[x];
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -191,9 +191,8 @@ void Game::CreateReward(Vector2D pos, int num)
 	{
 	case 0: premio = new GiveMeArrows(pos, Vector2D(0, 0.1), 50, 35, textures[7], textures[8], this, color);
 		break;
-	case 1: premio = new BigArrows(pos, Vector2D(0, 0.1), 50, 35, textures[7], textures[8], this, color);
+	case 1: premio = new BigArrows(pos, Vector2D(0, 0.1), 50, 35, textures[7], textures[8], this, color,3000);
 		break;
-
 	}
 	events.push_back(premio);
 	auto et = objects.insert(objects.end(), premio);
@@ -290,7 +289,7 @@ void Game::loadFroamFile(ifstream& input) {
 					objects.push_back(new GiveMeArrows(Point2D(0, 0), Vector2D(0, 0), 20, 20, textures[7], textures[8], this, color));
 					break;
 				case 1:
-					objects.push_back(new BigArrows(Point2D(0, 0), Vector2D(0, 0), 20, 20, textures[7], textures[8], this, color));
+					objects.push_back(new BigArrows(Point2D(0, 0), Vector2D(0, 0), 20, 20, textures[7], textures[8], this, color,3000));
 					break;
 
 				}
