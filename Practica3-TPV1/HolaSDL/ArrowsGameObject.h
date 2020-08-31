@@ -5,26 +5,24 @@
 #include "checkML.h"
 #include <list>
 #include <fstream>
+#include "SDLGameObject.h"
+#include "GameState.h"
 
-class Game;
 
-class ArrowsGameObject:public GameObject
+class ArrowsGameObject:public SDLGameObject
 {
 protected:
-	Point2D pos;
 	Vector2D vel;
-	Texture* texture;
-	int width, height;
-	Game* game = nullptr;
 
-	ArrowsGameObject(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* texture_, Game* game_)
-		: GameObject(), pos(pos_), vel(vel_), width(width_), height(height_), texture(texture_), game(game_) {};
+	ArrowsGameObject(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* texture_, GameState* state)
+		: SDLGameObject(pos_,width_,height_,texture_,state),vel(vel_) {};
 	
 public:
 	~ArrowsGameObject() {};
 	virtual void render();
 	virtual void update();
 	SDL_Rect getDestRect() {
+		
 		return SDL_Rect{ (int)pos.getX() , (int)pos.getY(), width , height };
 	}
 	SDL_Rect getCollisionRect()

@@ -5,7 +5,7 @@
 class GiveMeArrows :public Reward
 {
 public:
-	GiveMeArrows(Point2D esqIzq, Vector2D vel, uint ancho, uint alto, Texture* premio, Texture* _burbuje, Game* game, int _color);
+	GiveMeArrows(Point2D esqIzq, Vector2D vel, uint ancho, uint alto, Texture* premio, Texture* _burbuje, int _color ,GameState* game);
 	~GiveMeArrows() {};
 private:
 

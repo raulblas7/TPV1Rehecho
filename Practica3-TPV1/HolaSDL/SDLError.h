@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ArrowsError.h";
-#include "Game.h";
+#include "PlayState.h";
 #include <string>
 
 class SDLError :public ArrowsError

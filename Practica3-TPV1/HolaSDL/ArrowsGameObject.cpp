@@ -2,7 +2,7 @@
 #include <fstream>
 void ArrowsGameObject::render()
 {
-	texture->render(SDL_Rect{ (int)pos.getX(), (int)pos.getY(), width, height }, SDL_FLIP_NONE);
+	SDLGameObject::render();
 }
 
 void ArrowsGameObject::update()

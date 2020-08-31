@@ -7,7 +7,7 @@
 using namespace std;
 
 const int MAX_ARROW_TEXTURES = 10;
-class Game;
+class PlayState;
 class Scoreboard:public GameObject
 {
 private:
@@ -16,12 +16,12 @@ private:
 	Texture* arrows = nullptr;
 	uint ancho = 0;
 	uint alto = 0; 
-	Game* game = nullptr;
+	PlayState* game = nullptr;
 	vector<int>digitos;
 
 public:
 	Scoreboard();
-	Scoreboard(Point2D esqIzq, uint ancho, uint alto, Texture* points, Texture* arrows,Game*game);
+	Scoreboard(Point2D esqIzq, uint ancho, uint alto, Texture* points, Texture* arrows,PlayState*game);
 	~Scoreboard() {};
 	void Puntuacion(int score);
 	void render();

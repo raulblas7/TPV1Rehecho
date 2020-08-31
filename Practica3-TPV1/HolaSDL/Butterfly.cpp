@@ -1,6 +1,6 @@
 #include "Butterfly.h"
-#include "Game.h"
-Butterfly::Butterfly(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* butterfly_, Game* game_)
+#include "PlayState.h"
+Butterfly::Butterfly(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* butterfly_, GameState* game_)
 	: ArrowsGameObject(pos_, vel_, width_, height_, butterfly_, game_)
 {
 	time = SDL_GetTicks();
@@ -32,14 +32,14 @@ void Butterfly::update()
 			vel = Vector2D(vel.getX(), -vel.getY());
 		}
 
-		if (game->OnCollision(it))
+		if (dynamic_cast<PlayState*>(state)->OnCollision(it))
 		{
 			pinchado = true;
 			pinchazoTime = SDL_GetTicks();
 			vel = Vector2D(0, 2);
 		}
 	}
-	else if(SDL_GetTicks()>=pinchazoTime+3000){ game->killObject(it); }
+	else if(SDL_GetTicks()>=pinchazoTime+3000){ dynamic_cast<PlayState*>(state)->killObject(it); }
 }
 
 void Butterfly::saveToFile(ofstream& output) {

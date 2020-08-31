@@ -1,8 +1,8 @@
 #include "Bow.h"
-#include "Game.h"
+#include "PlayState.h"
 
 
-Bow::Bow(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* bow_,Texture* bowC_, Game* game_)
+Bow::Bow(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* bow_,Texture* bowC_, GameState* game_)
 	: ArrowsGameObject(pos_, vel_, width_, height_, bow_, game_), bowC(bowC_)
 {
 	aux = bow_;
@@ -47,15 +47,32 @@ void Bow::handleEvent(SDL_Event& event) {
 			vel = Vector2D(vel.getX(), abs(vel.getY())*-1);
 
 		}
-		else if (event.key.keysym.sym == SDLK_LEFT && !cargado && game->GetNumberArrows() > 0)
+		else if (event.key.keysym.sym == SDLK_LEFT && !cargado && dynamic_cast<PlayState*>(state)->GetNumberArrows() > 0)
 		{
 			cargado = true;
 		}
 		else if (event.key.keysym.sym == SDLK_RIGHT && cargado)
 		{
-			game->ThrowArrow(pos+ Vector2D(0,height/2));
+			dynamic_cast<PlayState*>(state)->ThrowArrow(pos+ Vector2D(0,height/2));
 			cargado = false;
 		}
 	}
 
+}
+
+void Bow::saveToFile(ofstream& output) {
+	output << "Arco" << endl;
+	ArrowsGameObject::saveToFile(output);
+	if (cargado) output << "cargado" << endl;
+	else output << "nocargado" << endl;
+}
+
+void Bow::loadFromFile(ifstream& input) {
+	ArrowsGameObject::loadFromFile(input);
+	string line;
+	input >> line;
+	if (line == "cargado") {
+		cargado = true;
+	}
+	else cargado = false;
 }

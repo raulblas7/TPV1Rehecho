@@ -1,10 +1,10 @@
 #include "Scoreboard.h"
 #include "checkML.h"
-#include "Game.h"
+#include "PlayState.h"
 using namespace std;
 Scoreboard::Scoreboard() : GameObject(), esqIzq(), ancho(), alto(), points(), arrows(),game() {
 }
-Scoreboard::Scoreboard(Point2D esqIzq, uint ancho, uint alto, Texture* points, Texture* arrows,Game*game)
+Scoreboard::Scoreboard(Point2D esqIzq, uint ancho, uint alto, Texture* points, Texture* arrows,PlayState*game)
 	: GameObject(), esqIzq(esqIzq), ancho(ancho), alto(alto), points(points), arrows(arrows),game(game)
 {
 	digitos.push_back(0);

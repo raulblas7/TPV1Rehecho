@@ -6,7 +6,7 @@ class Arrow:public ArrowsGameObject
 private:
 	 int numHits = 0;
 public:
-	Arrow(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* arrow_, Game* game_);
+	Arrow(Point2D pos_, Vector2D vel_, int width_, int height_, Texture* arrow_, GameState* game_);
 	~Arrow() {};
 	void render();
 	void update();

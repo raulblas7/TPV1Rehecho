@@ -1,6 +1,6 @@
 #include "Reward.h"
-#include "Game.h"
-Reward::Reward(Point2D pos_, Vector2D vel_, int width_, int height_, int row_, Texture* reward_, Texture* bubble_, Game* game_,int timePower)
+#include "PlayState.h"
+Reward::Reward(Point2D pos_, Vector2D vel_, int width_, int height_, int row_, Texture* reward_, Texture* bubble_, int timePower,GameState* game_)
 	: ArrowsGameObject(pos_, vel_, width_, height_, reward_, game_), row(row_), bubble(bubble_),timePower(timePower)
 {
 }
@@ -27,7 +27,7 @@ void Reward::render()
 void Reward::update()
 {
 	ArrowsGameObject::update();
-	if (game->OnCollision(it) && burbuja )
+	if (dynamic_cast<PlayState*>(state)->OnCollision(it) && burbuja )
 	{		burbuja = false;
 	}
 	
@@ -38,7 +38,7 @@ void Reward::update()
 			accion(false);
 
 		}
-		game->killObject(it);
+		dynamic_cast<PlayState*>(state)->killObject(it);
 	}
 
 	
