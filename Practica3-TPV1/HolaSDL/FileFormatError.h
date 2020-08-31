@@ -3,6 +3,7 @@
 #include "ArrowsError.h";
 #include <iostream>
 #include <string>
+#include "checkML.h"
 
 class FileFormatError : public ArrowsError
 {

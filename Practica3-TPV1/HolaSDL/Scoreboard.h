@@ -22,6 +22,7 @@ private:
 public:
 	Scoreboard();
 	Scoreboard(Point2D esqIzq, uint ancho, uint alto, Texture* points, Texture* arrows,Game*game);
+	~Scoreboard() {};
 	void Puntuacion(int score);
 	void render();
 	void update() {};

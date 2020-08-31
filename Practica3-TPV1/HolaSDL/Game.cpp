@@ -41,7 +41,7 @@ Game::~Game()
 		(*it) = nullptr;
 		++it;
 	}
-//	objects.clear();
+	objects.clear();
 	events.clear();
 	
 	for (uint x = 0; x < NUM_TEXTURES; x++) delete textures[x];

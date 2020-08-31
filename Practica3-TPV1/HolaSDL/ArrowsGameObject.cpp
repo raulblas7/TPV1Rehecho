@@ -10,10 +10,6 @@ void ArrowsGameObject::update()
 	pos = pos + vel;
 }
 
-void ArrowsGameObject::setItList(list<GameObject*>::iterator i)
-{
-	it = i;
-}
 
 void ArrowsGameObject::saveToFile(ofstream& output)
 {
