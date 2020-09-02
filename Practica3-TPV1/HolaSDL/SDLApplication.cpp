@@ -27,9 +27,15 @@ SDLApplication::~SDLApplication()
 	
 	for (uint x = 0; x < NUM_TEXTURES; x++) delete textures[x];
 	delete  menu;
+	menu = nullptr;
 	delete gamestamac;
+	gamestamac = nullptr;
 	delete play;
+	play = nullptr;
 	delete pause;
+	pause = nullptr;
+	delete end;
+	end = nullptr;
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -89,14 +95,24 @@ void SDLApplication::Exit() {
 	exit = true;
 }
 void SDLApplication::Load() {
-	gamestamac->changeState(new PlayState(this, true));
+	if (play == nullptr) {
+		play = new PlayState(this, true);
+	}
+	gamestamac->pushState(play);
 }
 
 void SDLApplication::Save() {
 	ofstream output;
 	gamestamac->popState();
-	dynamic_cast<PlayState*>(gamestamac->currentState())->saveToFile(output);
-	gamestamac->pushState(new PauseState(this));
+	play->saveToFile(output);
+	/*delete play;
+	play = nullptr;
+	delete menu;
+	menu = nullptr;*/
+	if (pause == nullptr) {
+		pause = new PauseState(this);
+	}
+	gamestamac->pushState(pause);
 	cout << "Partida guardada";
 	//SDL_Quit();
 }
@@ -110,14 +126,14 @@ void SDLApplication::MainMenu() {
 	gamestamac->pushState(menu);
 }
 void SDLApplication::GameOver() {
-	EndState* end = new EndState(this);
+	if(end==nullptr)end = new EndState(this);
 	gamestamac->pushState(end);
 	gamestamac->changeState(end);
 	cout << "Has perdido";
 }
 
 void SDLApplication::YouWin() {
-	EndState* end = new EndState(this);
+	if (end == nullptr)end = new EndState(this);
 	gamestamac->pushState(end);
 	gamestamac->changeState(end);
 	cout << "Has ganado";
@@ -130,3 +146,39 @@ void SDLApplication::ContinuePlaying() {
 }
 
 
+//void SDLApplication::playState() {
+//	if (play == nullptr) {
+//		play = new PlayState(this);
+//		play->initObjects();
+//	}
+//	gm->popState();
+//	gm->pushState(play);
+//}
+//void SDLApplication::pauseState() {
+//	if (pause == nullptr) pause = new PauseState(this);
+//	gm->popState();
+//	gm->pushState(pause);
+//}
+//void SDLApplication::endState(bool b) {
+//	if (end == nullptr) end = new EndState(this, b);
+//	gm->popState();
+//	gm->pushState(end);
+//}
+//void SDLApplication::menuState() {
+//	delete play;
+//	play = nullptr;
+//	delete end;
+//	end = nullptr;
+//	gm->popState();
+//	gm->pushState(menu);
+//}
+//void SDLApplication::loadGame() {
+//	play = new PlayState(this);
+//	try {
+//		play->loadGame();
+//	}
+//	catch (exception e) {
+//		cout << e.what() << endl;
+//		cout << "Se procede a crear una partida nueva" << endl;
+//		play = nullptr;
+//	}

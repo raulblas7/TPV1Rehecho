@@ -1,7 +1,6 @@
 #pragma once
 #include "EventHandler.h"
 #include "ArrowsGameObject.h"
-
 class Reward:public ArrowsGameObject,public  EventHandler
 {
 private:

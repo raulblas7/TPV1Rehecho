@@ -47,7 +47,7 @@ void Bow::handleEvent(SDL_Event& event) {
 			vel = Vector2D(vel.getX(), abs(vel.getY())*-1);
 
 		}
-		else if (event.key.keysym.sym == SDLK_LEFT && !cargado && dynamic_cast<PlayState*>(state)->GetNumberArrows() > 0)
+		else if (event.key.keysym.sym == SDLK_LEFT && !cargado )
 		{
 			cargado = true;
 		}

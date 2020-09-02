@@ -4,11 +4,12 @@
 PlayState::PlayState(SDLApplication* game, bool cargar_):GameState(game)
 {
 	cargar = cargar_;
-	pauseButton = new MenuButton(Point2D(400, 0), 50, 50, game->GetTexture(10), this, PauseCallback);
+	pauseButton = new MenuButton(Point2D(700, 0), 50, 50, game->GetTexture(10), this, PauseCallback);
 	scoreboard = new Scoreboard(Point2D(300, 0), 25, 35, game->GetTexture(5), game->GetTexture(4), this);
 	objects.push_back(scoreboard);
 	objects.push_back(pauseButton);
 	events.push_back(pauseButton);
+	pauseButton->setItList(--objects.end());
 	frameBalloonTime = SDL_GetTicks();
 	ifstream input;
 	if (cargar) {
@@ -16,7 +17,7 @@ PlayState::PlayState(SDLApplication* game, bool cargar_):GameState(game)
 	}
 	else
 	{
-		Bow* arco = new Bow(Point2D(0, 100), Vector2D(0, 10), 80, 80, game->GetTexture(0), game->GetTexture(2), this);
+		Bow* arco = new Bow(Point2D(0, 100), Vector2D(0, 10), 80, 80, game->GetTexture(2), game->GetTexture(0), this);
 		objects.push_back(arco);
 		arco->setItList(--objects.end());
 		events.push_back(arco);
@@ -52,7 +53,7 @@ void PlayState::update()
 	objectsToDelete.clear();
 
 
-	if (mariposas == 0 || flechas == 0)
+	if (mariposas == 0 || flechas < 0)
 	{
 		game->GameOver();
 
@@ -98,8 +99,7 @@ bool PlayState::OnCollision(list<GameObject*>::iterator et)
 
 void PlayState::ThrowArrow(Point2D pos)
 {
-	if (flechas > 0)
-	{
+	
 		double witdh = 90;
 		double height = 20;
 		auto flecha = new Arrow(Point2D(pos.getX(), pos.getY() - height / 2), Vector2D(15, 0), witdh + arrowsSize, height + arrowsSize, game->GetTexture(3), this);
@@ -107,7 +107,7 @@ void PlayState::ThrowArrow(Point2D pos)
 		flecha->setItList(--objects.end());
 		arrows.push_back(flecha);
 		flechas--;
-	}
+	
 }
 
 void PlayState::generateBalloons()
@@ -178,7 +178,7 @@ void PlayState::NewLevel()
 	level++;
 	if (level < NUM_Lvl) {
 		for (auto& x : objects) {
-			if (dynamic_cast<Scoreboard*>(x) == nullptr && dynamic_cast<Bow*>(x) == nullptr)
+			if (dynamic_cast<Scoreboard*>(x) == nullptr && dynamic_cast<Bow*>(x) == nullptr  && dynamic_cast<MenuButton*>(x) == nullptr)
 			{
 				objectsToDelete.push_back(x);
 			}
@@ -197,7 +197,7 @@ void PlayState::NewLevel()
 		Vel_But = niveles[level].velBut;
 		generateButterfly();
 	}
-	else { cout << "HAS GANADO!" << endl;  }
+	else { game->YouWin(); }
 
 }
 
@@ -215,7 +215,12 @@ void PlayState::saveToFile(ofstream& output) {
 		int objetos = objects.size();
 		output << objetos << endl;
 		for (auto it = ++objects.begin(); it != objects.end(); ++it) {
-			dynamic_cast<ArrowsGameObject*>(*it)->saveToFile(output);
+			auto ob = dynamic_cast<ArrowsGameObject*>(*it);
+			if (ob!=nullptr)
+			{
+				ob->saveToFile(output);
+
+			}
 		}
 	}
 	output.close();
@@ -253,7 +258,7 @@ void PlayState::loadFroamFile(ifstream& input) {
 				arrows.push_back(dynamic_cast<Arrow*>(objects.back()));
 			}
 			else if (line == "Arco") {
-				objects.push_back(new Bow(Point2D(0, 0), Vector2D(0, 0), 20, 20, game->GetTexture(0),  game->GetTexture(2), this));
+				objects.push_back(new Bow(Point2D(0, 0), Vector2D(0, 0), 20, 20, game->GetTexture(2), game->GetTexture(0), this));
 				events.push_back(dynamic_cast<EventHandler*>(objects.back()));
 			}
 			else if (line == "Premio") {

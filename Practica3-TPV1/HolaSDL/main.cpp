@@ -9,5 +9,6 @@ int main(int argc, char* argv[]) {
 
 	SDLApplication* a = new SDLApplication();
 	delete a;
+	a = nullptr;
 	return 0;
 }

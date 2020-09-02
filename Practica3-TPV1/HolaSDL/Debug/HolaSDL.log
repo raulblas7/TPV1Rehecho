@@ -1,15 +1,1 @@
-﻿  PlayState.cpp
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileFormatError.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(4,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\FileNotFoundError.h(5,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\GiveMeArrows.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\BigArrows.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\SDLError.h(3,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\SDLError.h(4,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\PlayState.cpp(105,117): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\PlayState.cpp(105,96): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\PlayState.cpp(142,55): warning C4244: '+=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\PlayState.cpp(287,20): warning C4244: '+=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\HolaSDL\PlayState.cpp(97): warning C4715: 'PlayState::OnCollision': no todas las rutas de acceso de control devuelven un valor
-  HolaSDL.vcxproj -> C:\Users\anass\Desktop\IG\TPV1Rehecho\Practica3-TPV1\bin\HolaSDLDebug.exe
+﻿
